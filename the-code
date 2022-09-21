@@ -1,0 +1,46 @@
+import random
+
+print('Mari Memainkan Hompimpa Alaihum Gambreng')
+print('-----------------------------------')
+
+def validasi(tangan):
+    if tangan < 0:
+        return False
+    if tangan > 1:
+        return False
+    return True
+
+def cetak_tangan(tangan, nama='Saya'):
+    jenis = ['Hitam', 'Putih']
+    print(nama + ' Memilih: ' + jenis[tangan])
+
+def juri(pemain, bot, bot2):
+    if pemain == bot and pemain == bot2 and bot == bot2:
+        return 'Seri'
+    elif pemain == 0 and bot == 1 and bot2 == 1:
+        return 'Kalah'
+    elif pemain == 1 and bot == 2 and bot2 == 2:
+        return 'Kalah'
+    elif pemain == 2 and bot == 0 and bot2 == 0:
+        return 'Kalah'
+    else:
+        return 'Menang'
+
+nama_player = input('Input nama mu: ')
+print('-----------------------------------')
+print('Pilih Tangan \n0: Hitam \n1: Putih')
+print('-----------------------------------')
+tangan_player = int(input('Pilih yang mana: '))
+
+if validasi(tangan_player):
+    tangan_bot = random.randint(0,1)
+    tangan_bot2 = random.randint(0, 1)
+    cetak_tangan(tangan_player, nama_player)
+    cetak_tangan(tangan_bot, 'Bot')
+    cetak_tangan(tangan_bot2, 'Bot 2')
+
+    hasil = juri(tangan_player, tangan_bot, tangan_bot2)
+    print('Hasil Turnamen: ' + hasil)
+
+else:
+    print('Nothing option for that')
